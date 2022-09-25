@@ -1,13 +1,29 @@
-#root, html, body {
+#root,
+html,
+body {
   margin: 0;
   padding: 0;
   height: 100vh;
   box-sizing: border-box;
 }
 
+.navbar {
+    width: 100%;
+    height: 4%;    
+    font-size: large;
+    font-weight: bolder;
+    padding: 10px 15px 0 15px;
+    display: flex;
+    align-items:flex-start;
+    flex-direction: row;   
+    background: linear-gradient(145deg, #b0aeae, #d1cfcf);
+    box-shadow: 8px 8px 16px #929191,
+      -8px -8px 16px hsl(0, 12%, 95%);
+  }
+
 .app {
   height: 100%;
-  background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url('./images/bg.jpg');
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('./images/bg.jpg');
   background-size: cover;
   background-position: center;
   display: flex;
@@ -17,95 +33,126 @@
 }
 
 .card {
-  background: whitesmoke;
-  width: 40%;
-  height: 20%;
+  max-width: 55%;
+  max-height: 50%;
   display: flex;
   align-items: center;
   flex-direction: column;
+  padding: 10px 15px 0 15px;
+  border-radius: 24px;
+  background: linear-gradient(145deg, #b0aeae, #d1cfcf);
+  box-shadow: 8px 8px 16px #929191,
+    -8px -8px 16px #f4f1f1;
+}
+
+.quote {
+  display: flex;
+  align-items: center;
+  /* height: 5px; */
+}
+
+.author {
+  display: flex;
+  align-items: center;
+}
+
+/* Button CSS Starts*/
+
+.icon-btn {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #cdcdcd;
+  background: white;
   border-radius: 25px;
-  padding: 2%;
-  box-shadow: 10px 10px;
-}
-
-.heading {
-  display: flex;
-  align-items: center;
-  height: 582px;
-}
-
-.button {
+  overflow: hidden;
   position: relative;
-  outline: none;
-  text-decoration: none;
-  border-radius: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  text-transform: uppercase;
-  height: 200px;
-  width: 210px;
-  opacity: 1;
-  background-color: #ffffff;
-  border: 1px solid rgba(22, 76, 167, 0.6);
-}
-  
-.button span {
-  color: #164ca7;
-  font-size: 12px;
+  transition: width 0.2s ease-in-out;
   font-weight: 500;
-  letter-spacing: 0.7px;
+  font-family: inherit;
+  margin: 10px 0 10px 0;
 }
-  
-.button:hover {
-  animation: rotate 0.7s ease-in-out both;
-}
-  
-.button:hover span {
-  animation: storm 0.7s ease-in-out both;
-  animation-delay: 0.06s;
-}
-  
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg) translate3d(0, 0, 0);
-  }
-  25% {
-    transform: rotate(3deg) translate3d(0, 0, 0);
-  }
-  50% {
-    transform: rotate(-3deg) translate3d(0, 0, 0);
-  }
-  75% {
-    transform: rotate(1deg) translate3d(0, 0, 0);
-  }
-  100% {
-    transform: rotate(0deg) translate3d(0, 0, 0);
-  }
-}
-  
-@keyframes storm {
-  0% {
-    transform: translate3d(0, 0, 0) translateZ(0);
-  }
-  25% {
-    transform: translate3d(4px, 0, 0) translateZ(0);
-  }
-  50% {
-    transform: translate3d(-3px, 0, 0) translateZ(0);
-  }
-  75% {
-    transform: translate3d(2px, 0, 0) translateZ(0);
-  }
-  100% {
-    transform: translate3d(0, 0, 0) translateZ(0);
-  }
-}  
 
-@media only screen and (max-width: 600px) {
-  .card {
-      width: 80%;
-      height: 30%;
-  }
+.add-btn:hover {
+  width: 120px;
 }
+
+.add-btn::before,
+.add-btn::after {
+  transition: width 0.2s ease-in-out, border-radius 0.2s ease-in-out;
+  content: "";
+  position: absolute;
+  height: 4px;
+  width: 10px;
+  top: calc(50% - 2px);
+  background: rgb(35, 36, 36);
+}
+
+.add-btn::after {
+  right: 14px;
+  overflow: hidden;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+.add-btn::before {
+  left: 14px;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+
+.icon-btn:focus {
+  outline: none;
+}
+
+.btn-txt {
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.add-btn:hover::before,
+.add-btn:hover::after {
+  width: 4px;
+  border-radius: 2px;
+}
+
+.add-btn:hover .btn-txt {
+  opacity: 1;
+}
+
+.add-icon::after,
+.add-icon::before {
+  transition: all 0.2s ease-in-out;
+  content: "";
+  position: absolute;
+  height: 20px;
+  width: 2px;
+  top: calc(50% - 10px);
+  background: rgb(35, 36, 36);
+  overflow: hidden;
+}
+
+.add-icon::before {
+  left: 22px;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+
+.add-icon::after {
+  right: 22px;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+.add-btn:hover .add-icon::before {
+  left: 15px;
+  height: 4px;
+  top: calc(50% - 2px);
+}
+
+.add-btn:hover .add-icon::after {
+  right: 15px;
+  height: 4px;
+  top: calc(50% - 2px);
+}
+
+/* Button CSS Ends */

@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 
 import './App.css';
+import Navbar from './Navbar';
 
-class App extends React.Component {
-  state = { quote: '' };
+class App extends Component {
+  state = {
+    quote: '',
+    author: ''
+  };
 
   componentDidMount() {
     this.fetchQuotes();
@@ -15,8 +19,10 @@ class App extends React.Component {
       .then((response) => {
         const randomIndex = Math.round(Math.random() * response.data.length);
         // console.log(response.data[randomIndex].text);
+        // console.log(response.data[randomIndex].author);
         this.setState({
-          quote: response.data[randomIndex].text
+          quote: response.data[randomIndex].text,
+          author: response.data[randomIndex].author
         })
 
       })
@@ -26,15 +32,19 @@ class App extends React.Component {
 
   render() {
     return (
-      //  <h1>{this.state.quote}</h1>
-      <div className="app">
-        <div className="card">
-          <h1 className="heading">{this.state.quote}</h1>
-          <button className="button" onClick={this.fetchQuotes}>
-            <span>New Quote</span>
-          </button>
+      <Fragment>
+        <Navbar />
+        <div className="app">
+          <div className="card">
+            <h1 className="quote">{this.state.quote}</h1>
+            <p className="author">-{this.state.author}-</p>
+            <button class="icon-btn add-btn" onClick={this.fetchQuotes}>
+              <div class="add-icon"></div>
+              <div class="btn-txt">New Quote</div>
+            </button>
+          </div>
         </div>
-      </div>
+      </Fragment>
     );
   }
 }
