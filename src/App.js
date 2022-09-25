@@ -4,33 +4,34 @@ import axios from 'axios';
 import './App.css';
 
 class App extends React.Component {
-  state = {
-    quote: '',
-  }
+  state = { quote: '' };
 
   componentDidMount() {
-    this.fetchAdvice();
+    this.fetchQuotes();
   }
 
-  fetchAdvice = () => {
-    axios.get('https://api.adviceslip.com/advice')
+  fetchQuotes = () => {
+    axios.get('https://type.fit/api/quotes')
       .then((response) => {
-        const { advice } = response.data.slip;
+        const randomIndex = Math.round(Math.random() * response.data.length);
+        // console.log(response.data[randomIndex].text);
+        this.setState({
+          quote: response.data[randomIndex].text
+        })
 
-        this.setState({ advice });
       })
-      .catch((error) => {
-        console.log(error);
-      });
   }
+
+
 
   render() {
     return (
+      //  <h1>{this.state.quote}</h1>
       <div className="app">
         <div className="card">
-          <h1 className="heading">{this.state.advice}</h1>
-          <button className="button" onClick={this.fetchAdvice}>
-            <span>GIVE ME ADVICE!</span>
+          <h1 className="heading">{this.state.quote}</h1>
+          <button className="button" onClick={this.fetchQuotes}>
+            <span>New Quote</span>
           </button>
         </div>
       </div>
