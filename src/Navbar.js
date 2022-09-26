@@ -1,16 +1,16 @@
-import React, { Fragment } from 'react'; 
+import React, { Fragment } from 'react';
 
 function Navbar(props) {
     return (
         <Fragment>
-           <nav className="navbar"><i className={props.icon}></i> {props.title}</nav>
+            <nav className="navbar"><i className={props.icon}></i> {props.title}</nav>
         </Fragment>
     )
 }
 
 Navbar.defaultProps = {
     title: 'Words of Wisdom',
-    icon: 'fa-solid fa-'
+    icon: 'fa-solid fa-quotes'
 }
 
 export default Navbar;
